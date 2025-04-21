@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafiques Heritage Tech Hub.</title>
+    <!-- Importing a tech-inspired font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Underdog&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+
+
+
+    <!---SwiperJS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            color: rgb(205, 202, 202);       
+            /* REPLACE WITH YOUR BACKGROUND IMAGE */
+            background: url('red background.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: "Underdog", system-ui;
+            min-height: 100vh;
+            background-repeat: no-repeat;
+            height: 400vh;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent dark */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 25px 5%;
+        }
+        
+        .navbar img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: red;
+        }
+
+        .register-btn {
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .register-btn .arrow {
+            color: red;
+            font-size: 18px;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .register-btn:hover {
+            color: red;
+        }
+
+        .register-btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+    @media (max-width: 768px) {
+        .nav-links {
+            position: absolute;
+            top: 70px;
+            right: 40px;
+            background: rgba(0, 0, 0, 0.95);
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+        }
+
+        .hero {
+            padding: 100px 20px 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .hero-left,
+        .hero-center,
+        .hero-right {
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-family: "Underdog", system-ui;
+            font-size: 3.2rem;
+            text-align: center;
+            line-height: 1.4;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .grey-gradient-text {
+            background: linear-gradient(135deg, #f5f4f4, #a09f9f, #747373);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #bf0c15, #dd2b43, #f35066);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glass-card{
+            width: 250px;
+            height: 120px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 0.5px solid #747373;
+            color: white;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Fade effect on left */
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 30%);
+            mask-image: linear-gradient(to right, transparent 0%, black 30%);
+        }
+
+        .card {
+            width: 250px;
+            height: 120px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 0.5px solid #747373;
+            color: white;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Fade effect on right */
+            -webkit-mask-image: linear-gradient(to left, transparent 0%, black 30%);
+            mask-image: linear-gradient(to left, transparent 0%, black 30%);
+        }
+
+        .glass-card h2,
+        .card h2 {
+            font-size: 36px;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .glass-card p,
+        .card p {
+            font-size: 14px;
+            color: #a3a3a3;
+            font-family: 'Poppins', sans-serif;
+            margin: 8px 0 0;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            width: 500px;
+            height: auto;
+            margin-top: 30px;
+            -webkit-mask-image: linear-gradient(to top, transparent 0%, black 100%);
+            mask-image: linear-gradient(to top, transparent 0%, black 100%);
+        }
+
+        .hero-right p {
+            color: #a3a3a3;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .button {
+            border: none;
+            border-radius: 30px;
+            background-color: white;
+            color: black;
+            padding: 12px 30px;
+            font-size: 16px;
+            margin-top: 30px; 
+            cursor: pointer;
+            text-align: left;
+        }
+
+
+        @media (max-width: 768px) {
+         h1 {
+            font-size: 2rem;
+        }
+
+        .hero-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-left,
+        .hero-center,
+        .hero-right {
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-right p {
+            text-align: center;
+        }
+        }
+        
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: #1a1a1a;
+            padding: 15px 0;
+            border-top: 1px solid #333;
+            margin-top: 0px;
+            border-bottom: 1px solid #333;
+            position: relative;
+            /* Add this for the slant */
+            transform: skewY(-2deg); /* Adjust angle as needed */
+            transform-origin: top left;
+            z-index: 2;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 60s linear infinite; /* Slower scroll */
+        }
+
+        .marquee-content span {
+            display: inline-block;
+            margin: 0 20px;
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            vertical-align: middle;
+        }
+
+        .marquee-content .icon {
+            background: linear-gradient(90deg, #e22850, #ee7692);
+            -webkit-background-clip: text;
+            background-clip: text;  /* Standard for other browsers */
+            -webkit-text-fill-color: transparent; /* Ensure text itself is transparent for the gradient */
+            color: transparent; /* Just in case */
+            font-size: 20px;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Only half since we duplicate content */
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #ff7300; }
+            to { text-shadow: 0 0 15px #ff7300, 0 0 30px #ff7300; }
+        }
+        
+        .services {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;  /* Keep padding minimal */
+            margin-top: 150px;
+        }
+
+        .services h2 {
+            font-size: 50px;  /* Adjust size */
+            font-family: "Underdog", system-ui;  /* You can choose your font */
+            color: #fff;  /* White color for visibility */
+            margin: 0;  /* Remove margin */
+            margin-bottom: 30px;
+        }
+
+        /* Adjust for small screens */
+        @media (max-width: 767px) {
+        .heading-section h2 {
+            font-size: 28px;  /* Smaller font for mobile */
+        }  
+        }
+
+        .service-feature {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            padding: 60px 10%;
+            flex-wrap: wrap;
+            color: #fff;
+        }
+
+        .service-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left; /* 👈 Fixes center alignment */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .service-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;    
+            color:  #747373;
+            text-align: left; /* 👈 Ensures all paragraph text is aligned left */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .service-text ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 30px;
+            text-align: left; /* 👈 Left-align the list */
+        }
+
+        .service-text ul li {
+            display: flex; /* 👈 So the checkmark and text sit nicely */
+            align-items: center;
+            gap: 10px; /* 👈 Space between checkmark and text */
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #747373;
+        }
+
+        .service-text ul li::before {
+            content: "✓";
+            color: #ff6d6d;
+            font-weight: bold;
+        }
+
+        .learn-more-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .service-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .service-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .stats-glass-card {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            padding: 60px 80px;
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.1); /* semi-transparent */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            color: white;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .stat-item p {
+            font-size: 1.3rem;
+            margin: 5px 0 0;
+            color: #747373;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .reviews {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;  /* Keep padding minimal */
+            margin-top: 100px;
+            font-size: 30px;  /* Adjust size */
+            font-family: "Underdog", system-ui; 
+            color: #fff;  /* White color for visibility */
+            margin-bottom: 30px;
+        }
+
+        .testimonials {
+            max-width: 1000px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .testimonials .wrapper {
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        .wrapper .testimonial-item {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+
+            min-height: 300px; /* Add this */
+            display: flex; 
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-item .info{
+            display: flex;
+            align-items: center;
+        }
+
+        .info img{
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .info .name{
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .info .job{
+            text-transform: capitalize;
+        }
+
+        .testimonial-item p{
+            margin-top: 15px;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .testimonial-item .rating{
+            margin-top: 15px;
+            font-size: 14px;
+            color: goldenrod;
+        }
+
+        .site-footer {
+            color: #ccc;
+            padding: 60px 20px;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 100px; /* ← Add this */
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+            gap: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px 20px;
+            text-align: left; /* ← This forces alignment */
+        }
+
+        .footer-logo {
+            width: 150px;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #999;
+        }
+
+        .footer-column h3 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #fff;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin-right: 10px;
+            font-size: 18px;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+        .footer-container {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-column {
+            max-width: 100%;
+        }
+
+        .footer-column ul {
+             padding: 0;
+        }
+
+        .footer-column h3 {
+            margin-top: 30px;
+        }
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #ccc;
+            font-size: 14px;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* subtle line */
+            font-family: 'Poppins', sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <!-- Replace src with your logo file -->
+        <img src="logo.png" alt="Logo" />
+    
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#">HOME</a></li>
+          <li><a href="courses.html">COURSES</a></li>
+          <li><a href="blog.html">BLOG</a></li>
+          <li><a href="pricing.html">PRICING</a></li>
+        </ul>
+    
+        <a href="register.html" class="register-btn">
+          REGISTER NOW <span class="arrow">→</span>
+        </a>
+    
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+
+    
+       <!-- Responsive Hero Section -->
+<section class="hero">
+    <div class="hero-container">
+      <div class="hero-left">
+        <div class="glass-card">
+          <h2>50+</h2>
+          <p>STUDENTS EMPOWERED</p>
+        </div>
+  
+        <div class="card">
+          <h2>90%</h2>
+          <p>SATISFACTION RATE</p>
+        </div>
+      </div>
+  
+      <div class="hero-center">
+        <h1>
+          <span class="grey-gradient-text">Grafiques Heritage</span><br />
+          <span class="gradient-text">Tech Hub.</span>
+        </h1>
+        <div class="hero-image">
+          <img src="hand.png" alt="Tech Illustration" />
+        </div>
+      </div>
+  
+      <div class="hero-right">
+        <p>
+          Enhanced skills leads to<br />
+          greater creativity and efficiency.<br />
+          Greater creativity and efficiency leads to<br />
+          impactful solutions.
+        </p>
+        <button class="button">GET STARTED</button>
+      </div>
+    </div>
+  </section>
+              
+        <div class="marquee">
+        <div class="marquee-content">
+            <span>MS Word</span><span class="icon">✦</span>
+            <span>MS Excel</span><span class="icon">✦</span>
+            <span>PowerPoint</span><span class="icon">✦</span>
+            <span>Corel Draw</span><span class="icon">✦</span>
+            <span>Photoshop</span><span class="icon">✦</span>
+            <span>Illustrator</span><span class="icon">✦</span>
+            <span>Canva</span><span class="icon">✦</span>
+            <span>Python</span><span class="icon">✦</span>
+            <span>Web Development</span><span class="icon">✦</span>
+            <span>Data Analysis</span><span class="icon">✦</span>
+
+            <!-- duplicate starts here -->
+            <span>MS Word</span><span class="icon">✦</span>
+            <span>MS Excel</span><span class="icon">✦</span>
+            <span>PowerPoint</span><span class="icon">✦</span>
+            <span>Corel Draw</span><span class="icon">✦</span>
+            <span>Photoshop</span><span class="icon">✦</span>
+            <span>Illustrator</span><span class="icon">✦</span>
+            <span>Canva</span><span class="icon">✦</span>
+            <span>Python</span><span class="icon">✦</span>
+            <span>Web Development</span><span class="icon">✦</span>
+            <span>Data Analysis</span><span class="icon">✦</span>
+        </div>
+        </div>
+              </div> 
+        </div>    
+    </section>
+
+
+    <section class="services"> 
+        <div>
+            <h2>Our Services</h2>
+        </div>
+        <section class="service-feature">
+            <div class="service-text">
+              <h2>IT Skills Training</h2>
+              <p>
+                Hands-on learning through real-life projects.<br>
+                Save on course fees while gaining valuable skills<br>
+                that enhance your career prospects.<br>
+                Create professional documents and presentations,<br>
+                design eye-catching graphics, and develop engaging web applications.
+              </p>
+              <ul>
+                <li>Boost your employability</li>
+                <li>Enhance your creative abilities</li>
+                <li>Master essential software tools</li>
+              </ul>
+              <a href="learnmore.html" class="learn-more-btn">Learn More →</a>
+            </div>
+            <div class="service-image">
+              <img src="computer image.png" alt="IT Skills Graphic" />
+            </div>
+          </section>
+    </section>
+
+    <div class="stats-glass-card">
+        <div class="stat-item">
+          <h2>4.9★</h2>
+          <p>Rating</p>
+        </div>
+        <div class="stat-item">
+          <h2>85%</h2>
+          <p>Practical</p>
+        </div>  
+        <div class="stat-item">
+          <h2>75%</h2>
+          <p>Skill Gain</p>
+        </div>
+        <div class="stat-item">
+          <h2>100%</h2>
+          <p>Completion</p>
+        </div>
+      </div>
+      
+      <section class="reviews"> 
+        <div>
+            <h2>Our Happy Students</h2>
+        </div>  
+
+        <section class="testimonials">
+            <div class="wrapper">
+                <div class="testimonial-content">
+                    <div class="swiper slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide testimonial-item">
+                                <div class="info">
+                                    <img src="profiles/profile 1.png" alt="image">
+                                    <div class="name-job">
+                                        <h3 class="name">Tomiwa</h3>
+                                    </div>
+                                </div>
+                                <p>
+                                    I learnt the basics of Computer in three weeks and i was able to gain something. Other places I have tried previously, usually teach for about three months but i wasn't really able to learn a lot
+                                </p>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide testimonial-item">
+                                <div class="info">
+                                    <img src="profiles/profile 2.png" alt="image">
+                                    <div class="name-job">
+                                        <h3 class="name">sarah</h3>
+                                    </div>
+                                </div>
+                                <p>
+                                    The MS Excel course transformed how I handle data at work. From basic formulas to advanced pivot tables - worth every minute!
+                                </p>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide testimonial-item">
+                                <div class="info">
+                                    <img src="profiles/profile 3.png" alt="image">
+                                    <div class="name-job">
+                                        <h3 class="name">Omolara</h3>
+                                    </div>
+                                </div>
+                                <p>
+                                    Finally mastered PowerPoint animations and professional deck designs. My presentations now wow clients consistently!
+                                </p>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide testimonial-item">
+                                <div class="info">
+                                    <img src="profiles/profile 4.png" alt="image">
+                                    <div class="name-job">
+                                        <h3 class="name">Emmanuel</h3>
+                                    </div>
+                                </div>
+                                <p>
+                                   Microsoft Word training saved me hours on document formatting. The productivity hacks were game-changers!
+                                </p>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide testimonial-item">
+                                <div class="info">
+                                    <img src="profiles/profile 5.png" alt="image">
+                                    <div class="name-job">
+                                        <h3 class="name">Ahmed</h3>
+                                    </div>
+                                </div>
+                                <p>
+                                    CorelDraw course helped me launch my freelance design business. The logo design techniques are industry-grade!
+                                </p>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide testimonial-item">
+                                <div class="info">
+                                    <img src="profiles/profile 6.png" alt="image">
+                                    <div class="name-job">
+                                        <h3 class="name">Divine</h3>
+                                    </div>
+                                </div>
+                                <p>
+                                    Illustrator training was perfect for vector art. Now creating professional brand assets with confidence!
+                                </p>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="site-footer">
+            <div class="footer-container">
+              <div class="footer-column logo-section">
+                <!-- Replace src with your actual logo -->
+                <img src="logo.png" alt="Grafiques Heritage Logo" class="footer-logo" />
+                <p>
+                  Master Microsoft Office, Design Tools, Web Dev, and Data Analysis with project-driven training. 
+                  Elevate your skills, portfolio, and career at Grafiques Heritage Tech Hub.
+                </p>
+                <div class="social-icons">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+                  <a href="https://wa.me/2348054941777" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </div>
+              </div>
+          
+              <div class="footer-column">
+                <h3>Useful Links</h3>
+                <ul>
+                  <li><a href="contactus.html">Contact Us</a></li>
+                  <li><a href="TandC.html">Terms &amp; Condition</a></li>
+                  <li><a href="privacy.html">Privacy</a></li>
+                </ul>
+              </div>
+          
+              <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <p><i class="fas fa-phone"></i> +234 805 494 1777</p>
+                    <p><i class="fas fa-envelope"></i> dexquiries@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Prime Mall, Team 7 / 69 Road Junction, 6th Ave, Gwarinpa, Abuja</p>
+                </ul>
+              </div>
+            </div>
+          </footer>
+
+          <div class="footer-bottom">
+            <p>All Rights Reserved © Grafiques Heritage <span id="year"></span></p>
+          </div>
+          
+          
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        <script src="app.js"> </script>
+
+        <script>
+            function toggleMenu() {
+                const links = document.querySelector('.nav-links');
+                links.classList.toggle('active');
+            }
+
+            document.getElementById("year").textContent = new Date().getFullYear();
+            var swiper = new Swiper(".slider", {
+              slidesPerView: 3,
+              spaceBetween: 30,
+              loop: false,
+              pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+              },
+              breakpoints: {
+                1024: {
+            slidesPerView: 3,
+             },
+                768: {
+            slidesPerView: 2,
+             },
+                480: {
+            slidesPerView: 1,
+            }
+             }
+
+            });
+          </script>
+</body>
+</html>
